@@ -2,9 +2,7 @@
 
 ## Introduction
 
-[https://noise-controller.herokuapp.com/](https://noise-controller.herokuapp.com/)
-
-You're a funny guy, but you keep losing your list of jokes and forgetting which ones had the best reactions! Well worry no more- Dad (or bad??) jokes app to the rescue.
+[https://noise-controller.herokuapp.com/api](https://noise-controller.herokuapp.com/api)
 
 ## Table of Contents
 
@@ -28,7 +26,7 @@ This repository holds all back-end files and resources for the noise controller 
 
 ## API URL
 
-https://jokr.herokuapp.com/api
+https://noise-controller.herokuapp.com/api
 
 [Back to Table of Contents](#table-of-contents)
 
