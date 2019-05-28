@@ -1,4 +1,4 @@
-const Db = require("../data/dbConfig");
+const Db = require("../data/dbConfig.js");
 
 module.exports = {
   get,
@@ -10,7 +10,7 @@ module.exports = {
 };
 
 function get() {
-  return Db("noise_controller_account as a").orderBy("a.id");
+  return Db("noise_controller_account");
 }
 
 async function getById(id) {

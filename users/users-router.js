@@ -72,4 +72,18 @@ router.post("/login", async (req, res, next) => {
   }
 });
 
+router.delete("/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const deleted = await Users.remove(id);
+    if (deleted) {
+      res.status(200).json({ msg: "delete success" });
+    } else {
+      next({ code: 404 });
+    }
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;

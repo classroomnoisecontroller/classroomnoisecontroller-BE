@@ -13,13 +13,6 @@ exports.up = function(knex, Promise) {
       field.string("classroom_name", 50);
       field.integer("score").defaultTo(0);
       field.integer("highest_score").defaultTo(0);
-      field
-        .integer("user_id")
-        .unsigned()
-        .references("id")
-        .inTable("users")
-        .onDelete("CASCADE")
-        .onUpdate("CASCADE");
     })
     .createTable("creatures", field => {
       field.increments();
@@ -40,13 +33,6 @@ exports.up = function(knex, Promise) {
         .references("id")
         .inTable("classrooms")
         .onDelete("CASCADE")
-        .onUpdate("CASCADE");
-      field
-        .integer("creature_id")
-        .unsigned()
-        .references("id")
-        .inTable("creatures")
-        .onDelete("RESTRICT")
         .onUpdate("CASCADE");
     });
 };

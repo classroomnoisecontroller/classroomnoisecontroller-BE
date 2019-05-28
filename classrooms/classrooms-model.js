@@ -26,6 +26,10 @@ function get(userId) {
     .orderBy("c.id");
 }
 
+// function get() {
+//   return Db("classrooms as c");
+// }
+
 function getById(id) {
   return Db("classrooms as c")
     .join("noise_controller_account as a", "c.id", "=", "a.classroom_id")

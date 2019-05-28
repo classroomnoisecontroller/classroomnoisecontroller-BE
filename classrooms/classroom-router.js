@@ -14,6 +14,15 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+// router.get("/", async (req, res, next) => {
+//   try {
+//     const classrooms = await Classrooms.get();
+//     res.status(200).json(classrooms);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
+
 router.get("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
