@@ -26,6 +26,8 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
+// get classrooms by user id
+
 router.get("/:id/classrooms", async (req, res, next) => {
   try {
     const user_id = parseInt(req.params.id);

@@ -3,7 +3,7 @@ const Classrooms = require("./classrooms-model.js");
 const accountDb = require("../accounts/accounts-model.js");
 const { protected } = require("../auth/auth.js");
 
-router.get("/", protected, async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   console.log(req.decodedToken.subject);
   try {
     const id = req.decodedToken.subject;
@@ -14,7 +14,7 @@ router.get("/", protected, async (req, res, next) => {
   }
 });
 
-router.get("/:id", protected, async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
     const classroom = await Classrooms.getById(id);
