@@ -113,24 +113,17 @@ yarn test
 
 ## API ENDPOINTS
 
-| name | method | endpoint | description |
-| ---- | ------ | -------- | ----------- |
-
-
-**Main Endpoint - User (/auth)**
-
-| Register | POST | /auth/register | Creates a new `user` to the users table in the database |
-| Login | POST | /auth/login | Checks whether payload from the `body` matches with a user in the database. On Succesful login, returns a message and a `JWT Token` |
-| Get all users | GET | /auth | `PROTECTED ROUTE` - Returns an array of user objects of all users |
-| Get all Classrooms by User Logged In | GET | /auth/:id/classrooms | `PROTECTED ROUTE` - Returns an array of the user information with nested classroom objects of the user |
-
-**Main Endpoint - Classrooms (/classrooms)**
-
-| Get all classrooms by the User logged in | GET | /classrooms | `PROTECTED ROUTE` - Returns an array of classroom objects for the user logged in only |
-| Get a classroom by ID | GET | /classrooms/:id | `PROTECTED ROUTE` - Returns an a classroom object by ID | |
-| Add a new classroom | POST | /classrooms | `PROTECTED ROUTE` - Adds the classroom object created |
-| Edit a classroom | PUT | /classrooms/:id | `PROTECTED ROUTE` - Edits the classroom object created | |
-| Delete from wallet | DELETE | /classrooms/:id | `PROTECTED ROUTE` - Deletes a specific classroom by ID |
+| name                                     | method | endpoint             | description                                                                                                                         |
+| ---------------------------------------- | ------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| Register                                 | POST   | /auth/register       | Creates a new `user` to the users table in the database                                                                             |
+| Login                                    | POST   | /auth/login          | Checks whether payload from the `body` matches with a user in the database. On Succesful login, returns a message and a `JWT Token` |
+| Get all users                            | GET    | /auth                | `PROTECTED ROUTE` - Returns an array of user objects of all users                                                                   |
+| Get all Classrooms by User Logged In     | GET    | /auth/:id/classrooms | `PROTECTED ROUTE` - Returns an array of the user information with nested classroom objects of the user                              |
+| Get all classrooms by the User logged in | GET    | /classrooms          | `PROTECTED ROUTE` - Returns an array of classroom objects for the user logged in only                                               |
+| Get a classroom by ID                    | GET    | /classrooms/:id      | `PROTECTED ROUTE` - Returns an a classroom object by ID                                                                             |  |
+| Add a new classroom                      | POST   | /classrooms          | `PROTECTED ROUTE` - Adds the classroom object created                                                                               |
+| Edit a classroom                         | PUT    | /classrooms/:id      | `PROTECTED ROUTE` - Edits the classroom object created                                                                              |  |
+| Delete from wallet                       | DELETE | /classrooms/:id      | `PROTECTED ROUTE` - Deletes a specific classroom by ID                                                                              |
 
 [Back to Table of Contents](#table-of-contents)
 
