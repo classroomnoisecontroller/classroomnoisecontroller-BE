@@ -19,7 +19,7 @@ router.get("/:id", async (req, res, next) => {
     if (user) {
       res.status(200).json(user);
     } else {
-      next({ code: 404 });
+      next({ code: 400 });
     }
   } catch (err) {
     next(err);
@@ -38,7 +38,7 @@ router.get("/:id/classrooms", async (req, res, next) => {
       const data = { ...user, classrooms: userClassrooms };
       res.status(200).json(data);
     } else {
-      next({ code: 404 });
+      next({ code: 400 });
     }
   } catch (err) {
     next(err);
@@ -65,7 +65,7 @@ router.post("/login", async (req, res, next) => {
       const token = generateToken(user);
       res.status(200).json({ id: user.id, token });
     } else {
-      next({ code: 404 });
+      next({ code: 400 });
     }
   } catch (err) {
     next(err);
@@ -79,7 +79,7 @@ router.delete("/:id", async (req, res, next) => {
     if (deleted) {
       res.status(200).json({ msg: "delete success" });
     } else {
-      next({ code: 404 });
+      next({ code: 400 });
     }
   } catch (err) {
     next(err);

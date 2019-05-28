@@ -10,7 +10,7 @@ exports.up = function(knex, Promise) {
     })
     .createTable("classrooms", field => {
       field.increments();
-      field.string("classroom_name", 50);
+      field.string("classroom_name", 50).notNullable();
       field.integer("score").defaultTo(0);
       field.integer("highest_score").defaultTo(0);
     })
