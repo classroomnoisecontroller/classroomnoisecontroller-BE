@@ -123,7 +123,7 @@ yarn test
 | Get a classroom by ID                    | GET    | /classrooms/:id      | `PROTECTED ROUTE` - Returns an a classroom object by ID                                                                             |  |
 | Add a new classroom                      | POST   | /classrooms          | `PROTECTED ROUTE` - Adds the classroom object created                                                                               |
 | Edit a classroom                         | PUT    | /classrooms/:id      | `PROTECTED ROUTE` - Edits the classroom object created                                                                              |  |
-| Delete from wallet                       | DELETE | /classrooms/:id      | `PROTECTED ROUTE` - Deletes a specific classroom by ID                                                                              |
+| Delete from classroom                    | DELETE | /classrooms/:id      | `PROTECTED ROUTE` - Deletes a specific classroom by ID                                                                              |
 
 [Back to Table of Contents](#table-of-contents)
 
