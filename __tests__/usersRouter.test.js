@@ -1,5 +1,4 @@
 const request = require("supertest");
-
 const server = require("../server.js");
 
 describe("User data endpoints", () => {
@@ -21,16 +20,7 @@ describe("User data endpoints", () => {
     });
   });
 
-  describe("/post (login)", () => {
-    it("it should return 200 status code", async () => {
-      const res = await request(server)
-        .post("/api/auth/login")
-        .send({ username: "test", password: "password" });
-
-      console.log(res.status);
-      expect(res.status).toBe(200);
-    });
-
+  describe("POST (login)", () => {
     it("it should return a JSON object", async () => {
       const res = await request(server)
         .post("/api/auth/login")
