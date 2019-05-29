@@ -303,8 +303,22 @@ _example:_
     },
     {
       "user_id": 1,
-      "classroom_id": 6,
+      "classroom_id": 4,
       "classroom_name": "Labs",
+      "score": 0,
+      "highest_score": 0
+    },
+    {
+      "user_id": 1,
+      "classroom_id": 5,
+      "classroom_name": "Free Study Period",
+      "score": 0,
+      "highest_score": 0
+    },
+    {
+      "user_id": 1,
+      "classroom_id": 6,
+      "classroom_name": "Free Study Period I",
       "score": 0,
       "highest_score": 0
     },
@@ -314,23 +328,10 @@ _example:_
       "classroom_name": "Free Study Period",
       "score": 0,
       "highest_score": 0
-    },
-    {
-      "user_id": 1,
-      "classroom_id": 8,
-      "classroom_name": "Free Study Period I",
-      "score": 0,
-      "highest_score": 0
-    },
-    {
-      "user_id": 1,
-      "classroom_id": 9,
-      "classroom_name": "Free Study Period",
-      "score": 0,
-      "highest_score": 0
     }
   ]
 }
+
 ```
 
 #### Response
@@ -418,7 +419,7 @@ _example:_
     "teacher": "test"
   },
   {
-    "id": 6,
+    "id": 4,
     "classroom_name": "Labs",
     "score": 0,
     "highest_score": 0,
@@ -426,7 +427,7 @@ _example:_
     "teacher": "test"
   },
   {
-    "id": 7,
+    "id": 5,
     "classroom_name": "Free Study Period",
     "score": 0,
     "highest_score": 0,
@@ -434,7 +435,7 @@ _example:_
     "teacher": "test"
   },
   {
-    "id": 8,
+    "id": 6,
     "classroom_name": "Free Study Period I",
     "score": 0,
     "highest_score": 0,
@@ -442,7 +443,7 @@ _example:_
     "teacher": "test"
   },
   {
-    "id": 9,
+    "id": 7,
     "classroom_name": "Free Study Period",
     "score": 0,
     "highest_score": 0,
