@@ -72,6 +72,18 @@ router.post("/login", async (req, res, next) => {
   }
 });
 
+// router.post("/login", (req, res) => {
+//   const { username, password } = req.body;
+//   Users.getBy({ username }).then(user => {
+//     if (user && bcrypt.compareSync(password, user.password)) {
+//       const token = generateToken(user);
+//       res.status(200).json({ id: user.id, token });
+//     } else {
+//       res.status(401).json({ message: "Invalid Login Credentials, Try Again" });
+//     }
+//   });
+// });
+
 router.delete("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;

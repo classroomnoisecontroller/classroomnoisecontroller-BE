@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const Classrooms = require("./classrooms-model.js");
 const accountDb = require("../accounts/accounts-model.js");
-const { protected } = require("../auth/auth.js");
+// const { protected } = require("../auth/auth.js");
 
 router.get("/", async (req, res, next) => {
   console.log(req.decodedToken.subject);
@@ -36,7 +36,7 @@ router.get("/:id", async (req, res, next) => {
     next(err);
   }
 });
-router.post("/", protected, async (req, res, next) => {
+router.post("/", async (req, res, next) => {
   try {
     const { classroom_name, score, highest_score } = req.body;
     if (classroom_name) {
@@ -55,7 +55,7 @@ router.post("/", protected, async (req, res, next) => {
   }
 });
 
-router.put("/:id", protected, async (req, res, next) => {
+router.put("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
     const change = req.body;
@@ -66,7 +66,7 @@ router.put("/:id", protected, async (req, res, next) => {
   }
 });
 
-router.delete("/:id", protected, async (req, res, next) => {
+router.delete("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
     const deleted = await Classrooms.remove(id);
