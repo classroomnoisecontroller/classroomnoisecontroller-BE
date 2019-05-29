@@ -131,6 +131,10 @@ yarn test
 
 # AUTH ROUTES
 
+---
+
+## _USERS_
+
 ## **REGISTER**
 
 ### **Registers a user**
@@ -241,9 +245,129 @@ _example:_
 }
 ```
 
-## **CLASSROOMS**
+---
 
-### **Registers a user**
+## **PULL CLASSROOMS BY USER**
+
+### **Pulls classrooms by the User logged in (FROM THE /auth ENDPOINT)**
+
+_Method Url:_ `/auth/:id/classrooms`
+
+_HTTP method:_ **[GET]**
+
+#### Headers
+
+| name           | type   | required | description              |
+| -------------- | ------ | -------- | ------------------------ |
+| `Content-Type` | String | Yes      | Must be application/json |
+
+#### Body
+
+| name             | type    | required | description                      |
+| ---------------- | ------- | -------- | -------------------------------- |
+| `id`             | Integer | Yes      | PRIMARY KEY                      |
+| `username`       | String  | Yes      |
+| `user_id`        | Integer | N/A      | pulled from the users table      |
+| `classroom_id`   | Integer | N/A      | pulled from the classrooms table |
+| `classroom_name` | String  | N/A      | pulled from the classrooms table |
+| `score`          | Integer | N/A      | pulled from the classrooms table |
+| `highest_score`  | Integer | N/A      | pulled from the classrooms table |
+
+_example:_
+
+```
+{
+  "id": 1,
+  "username": "test",
+  "classrooms": [
+    {
+      "user_id": 1,
+      "classroom_id": 1,
+      "classroom_name": "Reading",
+      "score": 0,
+      "highest_score": 0
+    },
+    {
+      "user_id": 1,
+      "classroom_id": 2,
+      "classroom_name": "Math",
+      "score": 0,
+      "highest_score": 0
+    },
+    {
+      "user_id": 1,
+      "classroom_id": 3,
+      "classroom_name": "Science",
+      "score": 0,
+      "highest_score": 0
+    },
+    {
+      "user_id": 1,
+      "classroom_id": 6,
+      "classroom_name": "Labs",
+      "score": 0,
+      "highest_score": 0
+    },
+    {
+      "user_id": 1,
+      "classroom_id": 7,
+      "classroom_name": "Free Study Period",
+      "score": 0,
+      "highest_score": 0
+    },
+    {
+      "user_id": 1,
+      "classroom_id": 8,
+      "classroom_name": "Free Study Period I",
+      "score": 0,
+      "highest_score": 0
+    },
+    {
+      "user_id": 1,
+      "classroom_id": 9,
+      "classroom_name": "Free Study Period",
+      "score": 0,
+      "highest_score": 0
+    }
+  ]
+}
+```
+
+#### Response
+
+##### 200 (OK)
+
+> If you successfully login and go to the endpoint, the endpoitn will return an HTTP response with a status code `200`.
+
+##### 401 (Unauthorized)
+
+> If you send in invalid fields, the endpoint will return an HTTP response with a status code `401` and a body as below.
+
+```
+{
+  "msg": "unauthorized"
+}
+```
+
+##### 404 (Not Found)
+
+> If you hit an endpoint that does not exist (for example, /classrooms/:id with an id that does not exist, the endpoint will return an HTTP response with a status code `404` and a body as below. )
+
+```
+{
+  "msg": "The requested information is not found"
+}
+```
+
+[Back to Table of Contents](#table-of-contents)
+
+---
+
+## _CLASSROOMS_
+
+##**LIST OF CLASSROOMS**##
+
+### **Pulls classrooms by the User logged in**
 
 _Method Url:_ `/classrooms`
 
@@ -257,21 +381,140 @@ _HTTP method:_ **[GET]**
 
 #### Body
 
-| name             | type    | required | description |
-| ---------------- | ------- | -------- | ----------- |
+| name             | type    | required | description                                                    |
+| ---------------- | ------- | -------- | -------------------------------------------------------------- |
 | `classroom_name` | String  | Yes      |
 | `score`          | Integer | No       |
 | `highest_score`  | Integer | No       |
+| `user_id`        | Integer | N/A      | pulled from the users table (id from /auth/:id or /auth)       |
+| `teacher`        | String  | N/A      | pulled from the users table (username from /auth/:id or /auth) |
+
+_example:_
+
+```
+[
+  {
+    "id": 1,
+    "classroom_name": "Reading",
+    "score": 0,
+    "highest_score": 0,
+    "user_id": 1,
+    "teacher": "test"
+  },
+  {
+    "id": 2,
+    "classroom_name": "Math",
+    "score": 0,
+    "highest_score": 0,
+    "user_id": 1,
+    "teacher": "test"
+  },
+  {
+    "id": 3,
+    "classroom_name": "Science",
+    "score": 0,
+    "highest_score": 0,
+    "user_id": 1,
+    "teacher": "test"
+  },
+  {
+    "id": 6,
+    "classroom_name": "Labs",
+    "score": 0,
+    "highest_score": 0,
+    "user_id": 1,
+    "teacher": "test"
+  },
+  {
+    "id": 7,
+    "classroom_name": "Free Study Period",
+    "score": 0,
+    "highest_score": 0,
+    "user_id": 1,
+    "teacher": "test"
+  },
+  {
+    "id": 8,
+    "classroom_name": "Free Study Period I",
+    "score": 0,
+    "highest_score": 0,
+    "user_id": 1,
+    "teacher": "test"
+  },
+  {
+    "id": 9,
+    "classroom_name": "Free Study Period",
+    "score": 0,
+    "highest_score": 0,
+    "user_id": 1,
+    "teacher": "test"
+  }
+]
+```
+
+#### Response
+
+##### 200 (OK)
+
+> If you successfully login and go to the endpoint, the endpoitn will return an HTTP response with a status code `200`.
+
+##### 401 (Unauthorized)
+
+> If you send in invalid fields, the endpoint will return an HTTP response with a status code `401` and a body as below.
+
+```
+{
+  "msg": "unauthorized"
+}
+```
+
+##### 404 (Not Found)
+
+> If you hit an endpoint that does not exist (for example, /classrooms/:id with an id that does not exist, the endpoint will return an HTTP response with a status code `404` and a body as below. )
+
+```
+{
+  "msg": "The requested information is not found"
+}
+```
+
+---
+
+##**CLASSROOM BY ID**
+
+### **Pulls specific classroom by the classroom id**
+
+_Method Url:_ `/classrooms/:id`
+
+_HTTP method:_ **[GET]**
+
+#### Headers
+
+| name           | type   | required | description              |
+| -------------- | ------ | -------- | ------------------------ |
+| `Content-Type` | String | Yes      | Must be application/json |
+
+#### Body
+
+| name             | type    | required | description                                                    |
+| ---------------- | ------- | -------- | -------------------------------------------------------------- |
+| `classroom_name` | String  | Yes      |
+| `score`          | Integer | No       |
+| `highest_score`  | Integer | No       |
+| `user_id`        | Integer | N/A      | pulled from the users table (id from /auth/:id or /auth)       |
+| `teacher`        | String  | N/A      | pulled from the users table (username from /auth/:id or /auth) |
 
 _example:_
 
 ```
 {
-        "id": 1,
-        "classroom_name": "Reading",
-        "score": 0,
-        "highest_score": 0,
-    }
+  "id": 1,
+  "classroom_name": "Reading",
+  "score": 0,
+  "highest_score": 0,
+  "user_id": 1,
+  "teacher": "test"
+}
 ```
 
 #### Response
