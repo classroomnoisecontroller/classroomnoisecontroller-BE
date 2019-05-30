@@ -26,7 +26,8 @@ router.get("/", loginProtected, async (req, res, next) => {
 router.get("/:id", loginProtected, async (req, res, next) => {
   try {
     const { id } = req.params;
-    const classroom = await Classrooms.getById(id);
+    const uid = req.decodedToken.subject;
+    const classroom = await Classrooms.getById(id, uid);
     if (classroom) {
       res.status(200).json(classroom);
     } else {

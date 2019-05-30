@@ -33,7 +33,6 @@ router.get("/:id/classrooms", loginProtected, async (req, res, next) => {
     const user_id = parseInt(req.params.id);
     const user = await Users.getById(user_id);
     const userClassrooms = await Users.getClassroomsByUser(user_id);
-    console.log(user);
     if (user) {
       const data = { ...user, classrooms: userClassrooms };
       res.status(200).json(data);

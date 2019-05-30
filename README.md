@@ -540,6 +540,7 @@ Live example API Endpoint: https://noise-controller.herokuapp.com/api/classrooms
 ```
 [
   {
+    "date": "2019-05-30 16:52:20",
     "id": 1,
     "classroom_name": "Reading",
     "score": 0,
@@ -548,6 +549,7 @@ Live example API Endpoint: https://noise-controller.herokuapp.com/api/classrooms
     "teacher": "test"
   },
   {
+    "date": "2019-05-30 16:52:52",
     "id": 2,
     "classroom_name": "Math",
     "score": 0,
@@ -556,6 +558,7 @@ Live example API Endpoint: https://noise-controller.herokuapp.com/api/classrooms
     "teacher": "test"
   },
   {
+    "date": "2019-05-30 16:53:02",
     "id": 3,
     "classroom_name": "Science",
     "score": 0,
@@ -564,6 +567,7 @@ Live example API Endpoint: https://noise-controller.herokuapp.com/api/classrooms
     "teacher": "test"
   },
   {
+    "date": "2019-05-30 16:53:12",
     "id": 4,
     "classroom_name": "Labs",
     "score": 0,
@@ -572,6 +576,7 @@ Live example API Endpoint: https://noise-controller.herokuapp.com/api/classrooms
     "teacher": "test"
   },
   {
+    "date": "2019-05-30 16:53:21",
     "id": 5,
     "classroom_name": "Free Study Period",
     "score": 0,
@@ -580,6 +585,7 @@ Live example API Endpoint: https://noise-controller.herokuapp.com/api/classrooms
     "teacher": "test"
   },
   {
+    "date": "2019-05-30 16:53:31",
     "id": 6,
     "classroom_name": "Free Study Period I",
     "score": 0,
@@ -588,6 +594,7 @@ Live example API Endpoint: https://noise-controller.herokuapp.com/api/classrooms
     "teacher": "test"
   },
   {
+    "date": "2019-05-30 16:53:40",
     "id": 7,
     "classroom_name": "Free Study Period",
     "score": 0,
@@ -655,6 +662,7 @@ Live example API Endpoint: https://noise-controller.herokuapp.com/api/classrooms
 
 ```
 {
+  "date": "2019-05-30 16:52:20",
   "id": 1,
   "classroom_name": "Reading",
   "score": 0,

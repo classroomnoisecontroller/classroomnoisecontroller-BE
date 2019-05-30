@@ -14,6 +14,7 @@ function get(userId) {
     .join("noise_controller_account as a", "c.id", "=", "a.classroom_id")
     .join("users as u", "u.id", "=", "a.user_id")
     .select(
+      "c.date",
       "c.id",
       "c.classroom_name",
       "c.score",
@@ -26,15 +27,12 @@ function get(userId) {
     .orderBy("c.id");
 }
 
-// function get() {
-//   return Db("classrooms as c");
-// }
-
-function getById(id) {
+function getById(id, userId) {
   return Db("classrooms as c")
     .join("noise_controller_account as a", "c.id", "=", "a.classroom_id")
     .join("users as u", "u.id", "=", "a.user_id")
     .select(
+      "c.date",
       "c.id",
       "c.classroom_name",
       "c.score",
@@ -43,6 +41,7 @@ function getById(id) {
       "u.username as teacher"
     )
     .where({ "c.id": id })
+    .andWhere({ "u.id": userId })
     .first();
 }
 
