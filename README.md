@@ -17,10 +17,10 @@
   - [Login](#LOGIN)
   - [Pull List of Users](#PULL-LIST-OF-USERS)
   - [Pull User Information by Id](#PULL-USER-INFORMATION-BY-ID)
-  - [Pull Classrooms by User (/auth/:id/classrooms endpoint)](#PULL-CLASSROOM-BY-USER)
+  - [Pull Classrooms by User (/auth/:id/classrooms endpoint)](#PULL-CLASSROOMS-BY-USER)
 - [Classroom Endpoint routes](#DATA-ROUTES)
-  - [Pull list of Classrooms by User (/classrooms endpoint)](#PULL-CLASSROOM-BY-USER)
-- [Pull Individual Classroom (/classrooms/:id endpoint)](#CLASSROOM-BY-ID)
+  - [Pull list of Classrooms by User (/classrooms endpoint)](#LIST-OF-CLASSROOMS)
+  - [Pull Individual Classroom (/classrooms/:id endpoint)](#CLASSROOM-BY-ID)
 
 ---
 
@@ -510,7 +510,7 @@ Live example API Endpoint: https://noise-controller.herokuapp.com/api/auth/1/cla
 
 ## _CLASSROOMS_
 
-##**LIST OF CLASSROOMS**##
+## **LIST OF CLASSROOMS**
 
 ### **Pulls classrooms by the User logged in**
 
@@ -626,7 +626,7 @@ Live example API Endpoint: https://noise-controller.herokuapp.com/api/classrooms
 
 ---
 
-##**CLASSROOM BY ID**
+## **CLASSROOM BY ID**
 
 ### **Pulls specific classroom by the classroom id**
 
