@@ -12,9 +12,15 @@
   * [SCHEMA](#SCHEMA)
   * [Test accounts](#Test-Accounts)
   * [API endpoints](#API-ENDPOINTS)
-- [Auth routes](#AUTH-ROUTES)
+- [Auth/User Endpoint routes](#AUTH-ROUTES)
   - [Register](#REGISTER)
-  - [Login](#Login)
+  - [Login](#LOGIN)
+  - [Pull List of Users](#PULL-LIST-OF-USERS)
+  - [Pull User Information by Id](#PULL-USER-INFORMATION-BY-ID)
+  - [Pull Classrooms by User (/auth/:id/classrooms endpoint)](#PULL-CLASSROOM-BY-USER)
+- [Classroom Endpoint routes](#DATA-ROUTES)
+  - [Pull list of Classrooms by User (/classrooms endpoint)](#PULL-CLASSROOM-BY-USER)
+- [Pull Individual Classroom (/classrooms/:id endpoint)](#CLASSROOM-BY-ID)
 
 ---
 
@@ -118,12 +124,12 @@ yarn test
 | Register                                 | POST   | /auth/register       | Creates a new `user` to the users table in the database                                                                             |
 | Login                                    | POST   | /auth/login          | Checks whether payload from the `body` matches with a user in the database. On Succesful login, returns a message and a `JWT Token` |
 | Get all users                            | GET    | /auth                | `PROTECTED ROUTE` - Returns an array of user objects of all users                                                                   |
-| Get all Classrooms by User Logged In     | GET    | /auth/:id/classrooms | `PROTECTED ROUTE` - Returns an array of the user information with nested classroom objects of the user                              |
+| Get all Classrooms by User Logged In     | GET    | /auth/:id/classrooms | `PROTECTED ROUTE` - Returns an array of the user information with nested classroom objects of the user by the user ID               |
 | Get all classrooms by the User logged in | GET    | /classrooms          | `PROTECTED ROUTE` - Returns an array of classroom objects for the user logged in only                                               |
-| Get a classroom by ID                    | GET    | /classrooms/:id      | `PROTECTED ROUTE` - Returns an a classroom object by ID                                                                             |  |
+| Get a classroom by ID                    | GET    | /classrooms/:id      | `PROTECTED ROUTE` - Returns an a classroom object by classroom ID                                                                   |  |
 | Add a new classroom                      | POST   | /classrooms          | `PROTECTED ROUTE` - Adds the classroom object created                                                                               |
-| Edit a classroom                         | PUT    | /classrooms/:id      | `PROTECTED ROUTE` - Edits the classroom object created                                                                              |  |
-| Delete from classroom                    | DELETE | /classrooms/:id      | `PROTECTED ROUTE` - Deletes a specific classroom by ID                                                                              |
+| Edit a classroom                         | PUT    | /classrooms/:id      | `PROTECTED ROUTE` - Edits the classroom object created by classroom ID                                                              |  |
+| Delete a classroom                       | DELETE | /classrooms/:id      | `PROTECTED ROUTE` - Deletes a specific classroom by classroom ID                                                                    |
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -247,6 +253,139 @@ _example:_
 
 ---
 
+## **PULL LIST OF USERS**
+
+### **Pulls list of users who have registered**
+
+_Method Url:_ `/auth`
+
+_HTTP method:_ **[GET]**
+
+#### Headers
+
+| name           | type   | required | description              |
+| -------------- | ------ | -------- | ------------------------ |
+| `Content-Type` | String | Yes      | Must be application/json |
+
+#### Body
+
+| name       | type    | required | description           |
+| ---------- | ------- | -------- | --------------------- |
+| `id`       | Integer | Yes      | PRIMARY KEY           |
+| `username` | String  | Yes      |
+| `password` | String  | Yes      | Encrypted after login |
+
+_example:_
+
+```
+[
+  {
+    "id": 1,
+    "username": "test",
+    "password": "$2a$10$D7aSCe7SyKYZgpx36ycT.eYuSN/sFqoWgiGF/kfvRRn82pUD/fXu2"
+  },
+  {
+    "id": 2,
+    "username": "admin",
+    "password": "$2a$10$pyGO3WnnCQUAK51iiW7BH.G1a8kTuyGsElv6wJODffknK8EGXyjQC"
+  },
+  {
+    "id": 3,
+    "username": "teacher",
+    "password": "$2a$10$mueD83uzIF3L9UNLxOHTf.h.3sZ1Z.PjBmHQh.4tMebFpKjrSQDAq"
+  }
+]
+```
+
+#### Response
+
+##### 200 (OK)
+
+> If you successfully login and go to the endpoint, the endpoint will return an HTTP response with a status code `200`.
+
+##### 401 (Unauthorized)
+
+> If you send in invalid fields, the endpoint will return an HTTP response with a status code `401` and a body as below.
+
+```
+{
+  "msg": "unauthorized"
+}
+```
+
+##### 404 (Not Found)
+
+> If you hit an endpoint that does not exist, the endpoint will return an HTTP response with a status code `404` and a body as below.
+
+```
+{
+  "msg": "The requested information is not found"
+}
+```
+
+---
+
+## **PULL USER INFORMATION BY ID**
+
+### **Pulls individual user information by ID**
+
+_Method Url:_ `/auth/:id`
+
+_HTTP method:_ **[GET]**
+
+#### Headers
+
+| name           | type   | required | description              |
+| -------------- | ------ | -------- | ------------------------ |
+| `Content-Type` | String | Yes      | Must be application/json |
+
+#### Body
+
+| name       | type    | required | description           |
+| ---------- | ------- | -------- | --------------------- |
+| `id`       | Integer | Yes      | PRIMARY KEY           |
+| `username` | String  | Yes      |
+| `password` | String  | Yes      | Encrypted after login |
+
+_example:_
+
+```
+{
+  "id": 1,
+  "username": "test",
+  "password": "$2a$10$D7aSCe7SyKYZgpx36ycT.eYuSN/sFqoWgiGF/kfvRRn82pUD/fXu2"
+}
+
+```
+
+#### Response
+
+##### 200 (OK)
+
+> If you successfully login and go to the endpoint, the endpoint will return an HTTP response with a status code `200`.
+
+##### 401 (Unauthorized)
+
+> If you send in invalid fields, the endpoint will return an HTTP response with a status code `401` and a body as below.
+
+```
+{
+  "msg": "unauthorized"
+}
+```
+
+##### 404 (Not Found)
+
+> If you hit an endpoint that does not exist, the endpoint will return an HTTP response with a status code `404` and a body as below.
+
+```
+{
+  "msg": "The requested information is not found"
+}
+```
+
+---
+
 ## **PULL CLASSROOMS BY USER**
 
 ### **Pulls classrooms by the User logged in (FROM THE /auth ENDPOINT)**
@@ -274,6 +413,7 @@ _HTTP method:_ **[GET]**
 | `highest_score`  | Integer | N/A      | pulled from the classrooms table |
 
 _example:_
+Live example API Endpoint: https://noise-controller.herokuapp.com/api/auth/1/classrooms
 
 ```
 {
@@ -338,7 +478,7 @@ _example:_
 
 ##### 200 (OK)
 
-> If you successfully login and go to the endpoint, the endpoitn will return an HTTP response with a status code `200`.
+> If you successfully login and go to the endpoint, the endpoint will return an HTTP response with a status code `200`.
 
 ##### 401 (Unauthorized)
 
@@ -352,7 +492,7 @@ _example:_
 
 ##### 404 (Not Found)
 
-> If you hit an endpoint that does not exist (for example, /classrooms/:id with an id that does not exist, the endpoint will return an HTTP response with a status code `404` and a body as below. )
+> If you hit an endpoint that does not exist (for example, /:id/classrooms with an id that does not exist), the endpoint will return an HTTP response with a status code `404` and a body as below.
 
 ```
 {
@@ -360,7 +500,11 @@ _example:_
 }
 ```
 
+---
+
 [Back to Table of Contents](#table-of-contents)
+
+# DATA ROUTES
 
 ---
 
@@ -391,6 +535,7 @@ _HTTP method:_ **[GET]**
 | `teacher`        | String  | N/A      | pulled from the users table (username from /auth/:id or /auth) |
 
 _example:_
+Live example API Endpoint: https://noise-controller.herokuapp.com/api/classrooms
 
 ```
 [
@@ -457,7 +602,7 @@ _example:_
 
 ##### 200 (OK)
 
-> If you successfully login and go to the endpoint, the endpoitn will return an HTTP response with a status code `200`.
+> If you successfully login and go to the endpoint, the endpoint will return an HTTP response with a status code `200`.
 
 ##### 401 (Unauthorized)
 
@@ -471,7 +616,7 @@ _example:_
 
 ##### 404 (Not Found)
 
-> If you hit an endpoint that does not exist (for example, /classrooms/:id with an id that does not exist, the endpoint will return an HTTP response with a status code `404` and a body as below. )
+> If you hit an endpoint that does not exist, the endpoint will return an HTTP response with a status code `404` and a body as below.
 
 ```
 {
@@ -506,6 +651,7 @@ _HTTP method:_ **[GET]**
 | `teacher`        | String  | N/A      | pulled from the users table (username from /auth/:id or /auth) |
 
 _example:_
+Live example API Endpoint: https://noise-controller.herokuapp.com/api/classrooms/1
 
 ```
 {
@@ -536,7 +682,7 @@ _example:_
 
 ##### 404 (Not Found)
 
-> If you hit an endpoint that does not exist (for example, /classrooms/:id with an id that does not exist, the endpoint will return an HTTP response with a status code `404` and a body as below. )
+> If you hit an endpoint that does not exist (for example, /classrooms/:id with an id that does not exist), the endpoint will return an HTTP response with a status code `404` and a body as below.
 
 ```
 {
