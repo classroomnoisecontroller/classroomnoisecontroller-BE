@@ -13,6 +13,7 @@ exports.up = function(knex, Promise) {
       field.string("classroom_name", 50).notNullable();
       field.integer("score").defaultTo(0);
       field.integer("highest_score").defaultTo(0);
+      field.date("date", 30).defaultTo(knex.fn.now());
     })
     .createTable("creatures", field => {
       field.increments();
