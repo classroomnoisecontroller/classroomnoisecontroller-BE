@@ -1,9 +1,9 @@
 const router = require("express").Router();
 const Users = require("./users-model.js");
 const bcrypt = require("bcryptjs");
-const { generateToken } = require("../auth/auth.js");
+const { generateToken, loginProtected } = require("../auth/auth.js");
 
-router.get("/", async (req, res, next) => {
+router.get("/", loginProtected, async (req, res, next) => {
   try {
     const users = await Users.get();
     res.status(200).json(users);
@@ -12,7 +12,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.get("/:id", async (req, res, next) => {
+router.get("/:id", loginProtected, async (req, res, next) => {
   try {
     const { id } = req.params;
     const user = await Users.getFullById(id);
@@ -28,7 +28,7 @@ router.get("/:id", async (req, res, next) => {
 
 // get classrooms by user id
 
-router.get("/:id/classrooms", async (req, res, next) => {
+router.get("/:id/classrooms", loginProtected, async (req, res, next) => {
   try {
     const user_id = parseInt(req.params.id);
     const user = await Users.getById(user_id);
@@ -84,7 +84,7 @@ router.post("/login", async (req, res, next) => {
 //   });
 // });
 
-router.delete("/:id", async (req, res, next) => {
+router.delete("/:id", loginProtected, async (req, res, next) => {
   try {
     const { id } = req.params;
     const deleted = await Users.remove(id);
